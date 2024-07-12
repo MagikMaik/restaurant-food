@@ -1,0 +1,12 @@
+<%= simple_form_for restaurant, html:{class:"container mt-3 d-flex justify-content-between align-items-end"} do |f| %>
+<div class="flex-grow-1">
+    <%= f.input :name, prompt: "Restaurant Name", input_html: {class:"form-control "}%>
+</div>
+<div class="flex-grow-1">
+  <%= f.input :address, as: :string, input_html: {class:"form-control"}%>
+</div>
+<div>
+  <span><%= f.submit restaurant.new_record? ? "create" : "update" , class: "btn btn-primary " %></span>
+  <span><%= link_to "Back", root_path, class:"btn btn-warning " %></span>
+</div>
+<% end %>
