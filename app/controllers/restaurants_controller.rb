@@ -4,7 +4,9 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
-  def show;end
+  def show
+    @dishes = Dish.all
+  end
 
   def new
     @restaurant = Restaurant.new
@@ -12,6 +14,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.user = current_user
     if @restaurant.save!
       respond_to do |format|
         format.html {redirect_to restaurant_path(@restaurant)}

@@ -1,0 +1,8 @@
+<%= simple_form_for [restaurant, dish] do |f|%>
+  <%= f.input :name, prompt: "Dish Name", input_html: {class:"form-control"} %>
+  <%= f.input :price, prompt: "Price", input_html: {class:"form-control"} %>
+  <%= f.input :description, prompt: "Dish Description", input_html: {class:"form-control"} %>
+  <%= f.input :status, prompt: "status", input_html: {class:"form-control"} %>
+  <%= f.submit dish.new_record? ? "Create" : "Update", class:"btn btn-primary" %>
+<% end %>
+  

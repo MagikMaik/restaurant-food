@@ -1,5 +1,18 @@
 <div class="container mt-5">
   <h1><%= @restaurant.name %></h1>
   <p><%= @restaurant.address %></p>
-  <%= link_to "Go back", root_path, class:"btn btn-outline-primary" %>
+  <%= link_to "Create Dish", new_restaurant_dish_path(@restaurant), class:"btn btn-primary" %>
+  <% @restaurant.dishes.each do |dish| %>
+    <p><%= link_to dish.name, restaurant_dish_path(dish), class:"text-decoration-none" %> Price: <%= dish.price %> Status: <%= dish.status %></p>
+  <div>
+    <%= link_to  dish_path(dish), class: "btn btn-danger", data: {turbo_method: :delete } do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+    <%= link_to  edit_restaurant_dish_path(@restaurant, dish), class:"btn btn-info" do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+    <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to "Go back", restaurants_path, class:"btn btn-outline-primary" %>
 </div>
